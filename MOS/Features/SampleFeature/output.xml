@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20170211 14:55:45.131" generator="Robot 3.0.1 (Python 2.7.10 on darwin)">
+<suite source="/Users/adilimroz/PycharmProjects/MOS/Features/SampleFeature/Test.robot" id="s1" name="Test">
+<test id="s1-t1" name="Check google search">
+<kw type="setup" name="Launch browser" library="Utility">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${LOGIN URL}</arg>
+<arg>${BROWSER}</arg>
+<arg>http://127.0.0.1:4444/wd/hub</arg>
+</arguments>
+<msg timestamp="20170211 14:55:45.584" level="INFO">Opening browser 'firefox' to base url 'http://www.google.com'</msg>
+<status status="PASS" endtime="20170211 14:55:53.437" starttime="20170211 14:55:45.583"></status>
+</kw>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" endtime="20170211 14:55:53.888" starttime="20170211 14:55:53.437"></status>
+</kw>
+<kw name="Set Browser Implicit Wait" library="Selenium2Library">
+<doc>Sets current browser's implicit wait in seconds.</doc>
+<arguments>
+<arg>${HOMEPAGE WAIT TIME}</arg>
+</arguments>
+<status status="PASS" endtime="20170211 14:55:53.944" starttime="20170211 14:55:53.888"></status>
+</kw>
+<status status="PASS" endtime="20170211 14:55:53.944" starttime="20170211 14:55:45.583"></status>
+</kw>
+<kw name="Get data from excel" library="Utility">
+<arguments>
+<arg>${TestDataFile}</arg>
+<arg>Sheet1</arg>
+<arg>dataOne</arg>
+</arguments>
+<assign>
+<var>${SearchString}</var>
+</assign>
+<kw name="Get Single Row Data" library="TestData">
+<arguments>
+<arg>${ExcelSheetPath}</arg>
+<arg>${SheetName}</arg>
+<arg>${UniqueKey}</arg>
+</arguments>
+<assign>
+<var>${ExtractedData}</var>
+</assign>
+<msg timestamp="20170211 14:55:53.955" level="INFO">${ExtractedData} = Adil Imroz</msg>
+<status status="PASS" endtime="20170211 14:55:53.955" starttime="20170211 14:55:53.945"></status>
+</kw>
+<msg timestamp="20170211 14:55:53.956" level="INFO">${SearchString} = Adil Imroz</msg>
+<status status="PASS" endtime="20170211 14:55:53.956" starttime="20170211 14:55:53.945"></status>
+</kw>
+<kw name="Input search string" library="SampleStepDefinition">
+<arguments>
+<arg>${SearchString}</arg>
+</arguments>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${SearchTextField}</arg>
+<arg>${searchString}</arg>
+</arguments>
+<msg timestamp="20170211 14:55:53.956" level="INFO">Typing text 'Adil Imroz' into text field 'id=lst-ib'</msg>
+<status status="PASS" endtime="20170211 14:56:44.170" starttime="20170211 14:55:53.956"></status>
+</kw>
+<status status="PASS" endtime="20170211 14:56:44.170" starttime="20170211 14:55:53.956"></status>
+</kw>
+<kw name="Check page load" library="Utility">
+<arguments>
+<arg>gle.com</arg>
+</arguments>
+<kw name="Get Location" library="Selenium2Library">
+<doc>Returns the current location.</doc>
+<assign>
+<var>${ExtractedUrl}</var>
+</assign>
+<msg timestamp="20170211 14:56:44.198" level="INFO">${ExtractedUrl} = https://www.google.co.in/?gfe_rd=cr&amp;ei=zNieWNrHHcnC8geqwp34CA&amp;gws_rd=ssl</msg>
+<status status="PASS" endtime="20170211 14:56:44.198" starttime="20170211 14:56:44.171"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${ExtractedUrl}</arg>
+<arg>${UrlString}</arg>
+</arguments>
+<msg timestamp="20170211 14:56:44.199" level="FAIL">'https://www.google.co.in/?gfe_rd=cr&amp;ei=zNieWNrHHcnC8geqwp34CA&amp;gws_rd=ssl' does not contain 'gle.com'</msg>
+<status status="FAIL" endtime="20170211 14:56:44.199" starttime="20170211 14:56:44.199"></status>
+</kw>
+<status status="FAIL" endtime="20170211 14:56:44.199" starttime="20170211 14:56:44.171"></status>
+</kw>
+<kw type="teardown" name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20170211 14:56:44.303" starttime="20170211 14:56:44.200"></status>
+</kw>
+<tags>
+<tag>Sanity</tag>
+</tags>
+<status status="FAIL" endtime="20170211 14:56:44.303" critical="yes" starttime="20170211 14:55:45.582">'https://www.google.co.in/?gfe_rd=cr&amp;ei=zNieWNrHHcnC8geqwp34CA&amp;gws_rd=ssl' does not contain 'gle.com'</status>
+</test>
+<status status="FAIL" endtime="20170211 14:56:44.304" starttime="20170211 14:55:45.137"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="1" pass="0">Critical Tests</stat>
+<stat fail="1" pass="0">All Tests</stat>
+</total>
+<tag>
+<stat fail="1" pass="0">Sanity</stat>
+</tag>
+<suite>
+<stat fail="1" id="s1" name="Test" pass="0">Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
